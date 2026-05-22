@@ -5,6 +5,7 @@ import About from './components/About'
 import Masters from './components/Masters'
 import Gallery from './components/Gallery'
 import Testimonials from './components/Testimonials'
+import Booking from './components/Booking'
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <Masters />
       <Gallery />
       <Testimonials />
+      <Booking />
     </div>
   )
 }

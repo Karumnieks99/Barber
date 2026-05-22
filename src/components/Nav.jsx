@@ -12,6 +12,17 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    const onKeyDown = (e) => { if (e.key === 'Escape') setMenuOpen(false) }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
+
   return (
     <>
       <nav
@@ -38,7 +49,7 @@ export default function Nav() {
         </ul>
 
         <button
-          className="md:hidden flex flex-col gap-[5px] p-2 z-60"
+          className="md:hidden flex flex-col gap-[5px] p-2"
           onClick={() => setMenuOpen((v) => !v)}
           aria-label="Toggle menu"
         >

@@ -28,7 +28,7 @@ export default function Testimonials() {
               variants={fadeUpVariants}
               className="bg-surface p-8 flex flex-col gap-6"
             >
-              <span className="font-display text-7xl text-gold leading-none select-none">"</span>
+              <span className="font-display text-7xl text-gold leading-none select-none" aria-hidden="true">"</span>
               <p className="font-body text-white/65 text-base leading-relaxed flex-1">{t.text}</p>
               <div className="flex items-center gap-4">
                 <div className="w-8 h-[1px] bg-gold flex-shrink-0" />

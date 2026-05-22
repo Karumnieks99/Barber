@@ -24,14 +24,14 @@ export default function Gallery() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-1">
           {GALLERY_IMAGES.map((src, i) => (
             <motion.div
-              key={i}
+              key={src}
               variants={fadeUpVariants}
               className="overflow-hidden bg-surface"
               style={{ aspectRatio: '1/1' }}
             >
               <img
                 src={src}
-                alt={`Gallery ${i + 1}`}
+                alt={`Barbershop work example ${i + 1}`}
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
               />
             </motion.div>

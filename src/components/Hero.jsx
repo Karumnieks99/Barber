@@ -4,6 +4,7 @@ import { letterVariants, letterContainerVariants } from '../animations'
 import { IMAGES } from '../constants'
 
 const HEADLINE = 'PRECISION. STYLE. IDENTITY.'
+const HEADLINE_CHARS = Array.from(HEADLINE)
 
 export default function Hero() {
   const ref = useRef(null)
@@ -35,9 +36,9 @@ export default function Hero() {
           style={{ fontSize: 'clamp(3rem, 9vw, 9rem)' }}
           aria-label={HEADLINE}
         >
-          {Array.from(HEADLINE).map((char, i) => (
+          {HEADLINE_CHARS.map((char, i) => (
             <motion.span
-              key={i}
+              key={`${char}-${i}`}
               variants={letterVariants}
               style={{
                 display: 'inline-block',

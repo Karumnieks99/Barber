@@ -3,6 +3,7 @@ import Hero from './components/Hero'
 import Services from './components/Services'
 import About from './components/About'
 import Masters from './components/Masters'
+import Gallery from './components/Gallery'
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
       <Services />
       <About />
       <Masters />
+      <Gallery />
     </div>
   )
 }

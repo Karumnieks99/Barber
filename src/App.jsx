@@ -4,6 +4,7 @@ import Services from './components/Services'
 import About from './components/About'
 import Masters from './components/Masters'
 import Gallery from './components/Gallery'
+import Testimonials from './components/Testimonials'
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <About />
       <Masters />
       <Gallery />
+      <Testimonials />
     </div>
   )
 }

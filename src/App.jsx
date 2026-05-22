@@ -7,6 +7,7 @@ import Gallery from './components/Gallery'
 import Testimonials from './components/Testimonials'
 import Booking from './components/Booking'
 import Footer from './components/Footer'
+import { CONTACT } from './constants'
 
 export default function App() {
   return (
@@ -20,6 +21,16 @@ export default function App() {
       <Testimonials />
       <Booking />
       <Footer />
+
+      {/* Fixed mobile BOOK button — hidden on md+ */}
+      <a
+        href={CONTACT.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="md:hidden fixed bottom-6 right-6 z-50 bg-gold text-black-void font-display text-lg tracking-widest px-7 py-3 hover:bg-white transition-colors duration-300"
+      >
+        BOOK
+      </a>
     </div>
   )
 }

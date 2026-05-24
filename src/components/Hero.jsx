@@ -1,10 +1,17 @@
-import { useRef } from 'react'
+import { Fragment, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { letterVariants, letterContainerVariants } from '../animations'
+import { letterVariants } from '../animations'
 import { IMAGES } from '../constants'
 
 const HEADLINE = 'PRECISION. STYLE. IDENTITY.'
-const HEADLINE_CHARS = Array.from(HEADLINE)
+const HEADLINE_WORDS = HEADLINE.split(' ')
+
+const wordContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.25, delayChildren: 0.1 },
+  },
+}
 
 export default function Hero() {
   const ref = useRef(null)
@@ -28,26 +35,29 @@ export default function Hero() {
 
       {/* Headline + CTA */}
       <div className="relative z-20 text-center px-6 max-w-6xl mx-auto">
+        {/*
+          Each word is a whitespace-nowrap inline-block span — the browser can only
+          line-break at the space text nodes between words, never mid-word.
+        */}
         <motion.div
-          variants={letterContainerVariants}
+          variants={wordContainerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           className="font-display leading-none tracking-wider text-white mb-6"
           style={{ fontSize: 'clamp(3rem, 9vw, 9rem)' }}
           aria-label={HEADLINE}
         >
-          {HEADLINE_CHARS.map((char, i) => (
-            <motion.span
-              key={`${char}-${i}`}
-              variants={letterVariants}
-              aria-hidden="true"
-              style={{
-                display: 'inline-block',
-                whiteSpace: char === ' ' ? 'pre' : 'normal',
-              }}
-            >
-              {char === ' ' ? ' ' : char}
-            </motion.span>
+          {HEADLINE_WORDS.map((word, i) => (
+            <Fragment key={word}>
+              <motion.span
+                variants={letterVariants}
+                aria-hidden="true"
+                style={{ display: 'inline-block', whiteSpace: 'nowrap' }}
+              >
+                {word}
+              </motion.span>
+              {i < HEADLINE_WORDS.length - 1 && ' '}
+            </Fragment>
           ))}
         </motion.div>
 

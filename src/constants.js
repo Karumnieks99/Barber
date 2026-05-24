@@ -89,5 +89,5 @@ export const CONTACT = {
 
 export const IMAGES = {
   hero: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1800&q=80&auto=format&fit=crop',
-  about: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1200&q=80&auto=format&fit=crop',
+  about: 'https://images.unsplash.com/photo-1675599193990-33d71150902b?w=1200&q=80&auto=format&fit=crop',
 }

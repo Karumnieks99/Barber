@@ -28,7 +28,7 @@ export default function Masters() {
                 <img
                   src={master.image}
                   alt={master.name}
-                  className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                  className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-[transform,filter] duration-700"
                 />
               </div>
               <h3 className="font-display text-3xl text-white tracking-wider">{master.name}</h3>

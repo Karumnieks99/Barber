@@ -40,6 +40,7 @@ export default function Hero() {
             <motion.span
               key={`${char}-${i}`}
               variants={letterVariants}
+              aria-hidden="true"
               style={{
                 display: 'inline-block',
                 whiteSpace: char === ' ' ? 'pre' : 'normal',

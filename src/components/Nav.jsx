@@ -1,10 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NAV_LINKS } from '../constants'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+
+  const hamburgerRef = useRef(null)
+  const overlayRef = useRef(null)
+  const didOpen = useRef(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -22,6 +26,30 @@ export default function Nav() {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
+
+  // Fix #3 & #6: focus management — move focus into overlay on open, restore on close
+  useEffect(() => {
+    if (menuOpen) {
+      didOpen.current = true
+      const firstLink = overlayRef.current?.querySelector('a')
+      firstLink?.focus()
+    } else if (didOpen.current) {
+      hamburgerRef.current?.focus()
+    }
+  }, [menuOpen])
+
+  // Fix #3: focus trap — keep Tab cycling within the overlay while it is open
+  const handleOverlayKeyDown = (e) => {
+    if (e.key !== 'Tab' || !overlayRef.current) return
+    const focusable = overlayRef.current.querySelectorAll('a[href], button, [tabindex]:not([tabindex="-1"])')
+    const first = focusable[0]
+    const last = focusable[focusable.length - 1]
+    if (e.shiftKey) {
+      if (document.activeElement === first) { e.preventDefault(); last.focus() }
+    } else {
+      if (document.activeElement === last) { e.preventDefault(); first.focus() }
+    }
+  }
 
   return (
     <>
@@ -48,10 +76,13 @@ export default function Nav() {
           ))}
         </ul>
 
+        {/* Fix #6: aria-expanded communicates open/closed state to screen readers */}
         <button
+          ref={hamburgerRef}
           className="md:hidden flex flex-col gap-[5px] p-2"
           onClick={() => setMenuOpen((v) => !v)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
           <span className={`w-6 h-[2px] bg-white transition-all duration-300 origin-center ${menuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
           <span className={`w-6 h-[2px] bg-white transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
@@ -62,6 +93,11 @@ export default function Nav() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            ref={overlayRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
+            onKeyDown={handleOverlayKeyDown}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

@@ -32,6 +32,9 @@ export default function Gallery() {
               <img
                 src={src}
                 alt={`Barbershop work example ${i + 1}`}
+                loading="lazy"
+                width="800"
+                height="800"
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
               />
             </motion.div>

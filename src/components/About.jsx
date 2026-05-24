@@ -32,6 +32,7 @@ export default function About() {
         {/* Text — offset down on desktop; motion.div so children stagger */}
         <motion.div
           variants={staggerContainerVariants}
+          initial="hidden"
           className="flex flex-col justify-end p-10 md:p-16 md:pt-40"
         >
           <motion.span variants={fadeUpVariants} className="font-body text-xs text-gold tracking-[0.3em] uppercase mb-3">

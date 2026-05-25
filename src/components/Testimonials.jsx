@@ -29,8 +29,8 @@ export default function Testimonials() {
               className="bg-surface p-8 flex flex-col gap-6"
             >
               <span className="font-display text-7xl text-gold leading-none select-none" aria-hidden="true">"</span>
-              <p className="font-body text-white/65 text-base leading-relaxed flex-1">{t.text}</p>
-              <div className="flex items-center gap-4">
+              <p className="font-body text-white/65 text-base leading-relaxed">{t.text}</p>
+              <div className="mt-auto flex items-center gap-4">
                 <div className="w-8 h-[1px] bg-gold flex-shrink-0" />
                 <span className="font-display text-xl text-white tracking-wider">{t.author}</span>
               </div>

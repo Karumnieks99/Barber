@@ -37,17 +37,17 @@ export const MASTERS = [
   {
     name: 'Aleksis Bergs',
     specialty: 'Classic & Scissor Work',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1647140655214-e4a2d914971f?w=600&q=80&auto=format&fit=crop',
   },
   {
     name: 'Māris Ozols',
     specialty: 'Beard Architecture',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1517832606299-7ae9b720a186?w=600&q=80&auto=format&fit=crop',
   },
   {
     name: 'Jānis Kalniņš',
     specialty: 'Hot Towel & Skin',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1553521041-d168abd31de3?w=600&q=80&auto=format&fit=crop',
   },
 ]
 

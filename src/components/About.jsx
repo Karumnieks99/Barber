@@ -14,7 +14,7 @@ export default function About() {
         variants={staggerContainerVariants}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
-        className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[3fr_2fr] min-h-[70vh]"
+        className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[3fr_2fr] md:min-h-[70vh]"
       >
         {/* Image — full bleed left column */}
         <motion.div
@@ -33,7 +33,8 @@ export default function About() {
         <motion.div
           variants={staggerContainerVariants}
           initial="hidden"
-          className="flex flex-col justify-end p-10 md:p-16 md:pt-40"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="flex flex-col p-10 md:justify-end md:p-16 md:pt-40"
         >
           <motion.span variants={fadeUpVariants} className="font-body text-xs text-gold tracking-[0.3em] uppercase mb-3">
             Mūsu stāsts

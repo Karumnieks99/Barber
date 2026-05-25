@@ -14,6 +14,7 @@ export default function Gallery() {
         variants={staggerContainerVariants}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
+        transition={{ staggerChildren: 0.05 }}
         className="max-w-6xl mx-auto"
       >
         <motion.div variants={fadeUpVariants} className="mb-12">
@@ -32,7 +33,7 @@ export default function Gallery() {
               <img
                 src={src}
                 alt={`Barbershop work example ${i + 1}`}
-                loading="lazy"
+                loading="eager"
                 width="800"
                 height="800"
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
